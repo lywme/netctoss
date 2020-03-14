@@ -31,7 +31,7 @@ public class MainServlet extends HttpServlet {
 		}
 		else if("/modiCost.do".equals(path))
 		{
-			modiCost(req,res);
+			//modiCost(req,res);
 		}
 		else
 		{
