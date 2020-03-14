@@ -78,16 +78,50 @@ public class CostDaoImpl implements CostDao, Serializable {
 		}
 	}
 	
+	
+	
+	@Override
+	public Cost findById(int id) {
+		Connection conn=null;
+		try
+		{
+			conn=DbUtils.getConnection();
+			String sql="select * from cost where id=?";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			Cost c=new Cost();
+			if(rs.next())
+			{
+				c.setCostId(rs.getInt(1));
+				c.setName(rs.getString(2));
+				c.setBaseDuration(rs.getInt(3));
+				c.setBaseCost(rs.getDouble(4));
+				c.setUnitCost(rs.getDouble(5));
+				c.setStatus(rs.getString(6));
+				c.setDescr(rs.getString(7));
+				c.setCreatime(rs.getTimestamp(8));
+				c.setStartime(rs.getTimestamp(9));
+				c.setCostType(rs.getString(10));
+			}
+			return c;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new RuntimeException("根据id查找时出错");
+		}
+		finally
+		{
+			DbUtils.close(conn);
+		}
+	}
+
 	public static void main(String[] args)
 	{
+		//main method to test the functionality of dao method
 		CostDao dao=new CostDaoImpl();
-		Cost c=new Cost();
-		c.setName("test name");
-		//c.setBaseDuration(20);
-		c.setBaseCost(9.9);
-		//c.setUnitCost(10.9);
-		c.setDescr("test description");
-		c.setCostType("1");
-		dao.save(c);
+		Cost c=dao.findById(1);
+		System.out.println(c.getName());
 	}
 }

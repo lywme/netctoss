@@ -97,7 +97,7 @@
                             </td>
                             <td>                                
                                 <input type="button" value="启用" class="btn_start" onclick="startFee();" />
-                                <input type="button" value="修改" class="btn_modify" onclick="location.href='fee_modi.html?id=${c.costId}';" />
+                                <input type="button" value="修改" class="btn_modify" onclick="location.href='toUpdateCost.do?id=${c.costId}';" />
                                 <input type="button" value="删除" class="btn_delete" onclick="deleteFee();" />
                             </td>
                         </tr>

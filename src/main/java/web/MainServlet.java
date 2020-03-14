@@ -29,9 +29,9 @@ public class MainServlet extends HttpServlet {
 		{
 			addCost(req,res);
 		}
-		else if("/modiCost.do".equals(path))
+		else if("/toUpdateCost.do".equals(path))
 		{
-			//modiCost(req,res);
+			toUpdateCost(req,res);
 		}
 		else
 		{
@@ -78,5 +78,21 @@ public class MainServlet extends HttpServlet {
 		CostDao dao=new CostDaoImpl();
 		dao.save(c);
 		res.sendRedirect("findCost.do");
+	}
+	
+	protected void toUpdateCost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		String requestId=req.getParameter("id");
+		if(requestId!=null && !requestId.equals(""))
+		{
+			CostDao dao=new CostDaoImpl();
+			Cost c=dao.findById(Integer.parseInt(requestId));
+			req.setAttribute("cost", c);
+			req.getRequestDispatcher("WEB-INF/cost/update.jsp").forward(req,res);
+		}
+		else
+		{
+			throw new RuntimeException("²éÑ¯Ê±idÎª¿Õ");
+		}
 	}
 }
