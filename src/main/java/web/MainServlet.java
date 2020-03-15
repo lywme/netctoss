@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.AdminDao;
+import dao.AdminDaoImpl;
 import dao.CostDao;
 import dao.CostDaoImpl;
+import entity.Admin;
 import entity.Cost;
 
 public class MainServlet extends HttpServlet {
@@ -32,6 +35,18 @@ public class MainServlet extends HttpServlet {
 		else if("/toUpdateCost.do".equals(path))
 		{
 			toUpdateCost(req,res);
+		}
+		else if("/toLogin.do".equals(path))
+		{
+			toLogin(req,res);
+		}
+		else if("/login.do".equals(path))
+		{
+			login(req,res);
+		}
+		else if("/toIndex.do".equals(path))
+		{
+			toIndex(req,res);
 		}
 		else
 		{
@@ -94,5 +109,44 @@ public class MainServlet extends HttpServlet {
 		{
 			throw new RuntimeException("≤È—Ø ±idŒ™ø’");
 		}
+	}
+	
+	protected void toLogin(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
+	}
+	
+	protected void login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		String name=req.getParameter("name");
+		String pwd=req.getParameter("pwd");
+		
+		AdminDao dao=new AdminDaoImpl();
+		Admin admin=dao.findByCode(name);
+		if(admin!=null)
+		{
+			if(admin.getPassword().equals(pwd))
+			{
+				//credentials are correct
+				res.sendRedirect("toIndex.do");
+			}
+			else
+			{
+				//password is incorrect
+				req.setAttribute("error", "√‹¬Î¥ÌŒÛ");
+				req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
+			}
+		}
+		else
+		{
+			//Can't find user
+			req.setAttribute("error", "’À∫≈¥ÌŒÛ");
+			req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
+		}
+	}
+	
+	protected void toIndex(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		req.getRequestDispatcher("WEB-INF/main/index.jsp").forward(req,res);
 	}
 }
