@@ -1,12 +1,16 @@
 package web;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AdminDao;
 import dao.AdminDaoImpl;
@@ -14,6 +18,7 @@ import dao.CostDao;
 import dao.CostDaoImpl;
 import entity.Admin;
 import entity.Cost;
+import util.ImageUtil;
 
 public class MainServlet extends HttpServlet {
 
@@ -47,6 +52,10 @@ public class MainServlet extends HttpServlet {
 		else if("/toIndex.do".equals(path))
 		{
 			toIndex(req,res);
+		}
+		else if("/createImg.do".equals(path))
+		{
+			createImg(req,res);
 		}
 		else
 		{
@@ -148,5 +157,20 @@ public class MainServlet extends HttpServlet {
 	protected void toIndex(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
 		req.getRequestDispatcher("WEB-INF/main/index.jsp").forward(req,res);
+	}
+	
+	protected void createImg(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		Object[] objs=ImageUtil.createImage();
+		String code=(String)objs[0];
+		//验证码保存到session
+		HttpSession session=req.getSession();
+		session.setAttribute("imgcode", code);
+		//将图片输出给浏览器
+		BufferedImage image=(BufferedImage)objs[1];
+		res.setContentType("image/png");
+		OutputStream os=res.getOutputStream();
+		ImageIO.write(image,"png",os);
+		os.close();
 	}
 }

@@ -25,7 +25,7 @@
                 <tr>
                     <td class="login_info">验证码：</td>
                     <td class="width70"><input name="" type="text" class="width70" /></td>
-                    <td><img src="images/valicode.jpg" alt="验证码" title="点击更换" /></td>  
+                    <td><img src="createImg.do" alt="验证码" title="点击更换" /></td>  
                     <td><span class="required">验证码错误</span></td>              
                 </tr>            
                 <tr>
