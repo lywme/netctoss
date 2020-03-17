@@ -24,16 +24,16 @@
                 </tr>
                 <tr>
                     <td class="login_info">验证码：</td>
-                    <td class="width70"><input name="" type="text" class="width70" /></td>
-                    <td><img src="createImg.do" alt="验证码" title="点击更换" /></td>  
-                    <td><span class="required">验证码错误</span></td>              
+                    <td class="width70"><input name="valicode" type="text" class="width70" /></td>
+                    <td><img src="createImg.do" onclick="this.setAttribute('src','createImg.do?x='+Math.random());" alt="验证码" title="点击更换" /></td>  
+                    <td><span class="required">${error}</span></td>              
                 </tr>            
                 <tr>
                     <td></td>
                     <td class="login_button" colspan="2">
                         <a href="javascript:document.forms[0].submit();"><img src="images/login_btn.png" /></a>
                     </td>    
-                    <td><span class="required">${error}</span></td>                
+                    <td><span class="required"></span></td>                
                 </tr>
             </table>
             </form>

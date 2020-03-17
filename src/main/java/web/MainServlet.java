@@ -53,6 +53,10 @@ public class MainServlet extends HttpServlet {
 		{
 			toIndex(req,res);
 		}
+		else if("/logOut.do".equals(path))
+		{
+			logout(req,res);
+		}
 		else if("/createImg.do".equals(path))
 		{
 			createImg(req,res);
@@ -129,34 +133,56 @@ public class MainServlet extends HttpServlet {
 	{
 		String name=req.getParameter("name");
 		String pwd=req.getParameter("pwd");
+		String valicode=req.getParameter("valicode");
 		
-		AdminDao dao=new AdminDaoImpl();
-		Admin admin=dao.findByCode(name);
-		if(admin!=null)
+		HttpSession session=req.getSession();
+		String sessionCode=(String)session.getAttribute("imgcode");
+		
+		if(!valicode.equalsIgnoreCase(sessionCode))
 		{
-			if(admin.getPassword().equals(pwd))
-			{
-				//credentials are correct
-				res.sendRedirect("toIndex.do");
-			}
-			else
-			{
-				//password is incorrect
-				req.setAttribute("error", "√‹¬Î¥ÌŒÛ");
-				req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
-			}
+			//—È÷§¬Î≤ª∫œ∑®
+			req.setAttribute("error", "—È÷§¬Î¥ÌŒÛ");
+			req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
 		}
 		else
 		{
-			//Can't find user
-			req.setAttribute("error", "’À∫≈¥ÌŒÛ");
-			req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
+			AdminDao dao=new AdminDaoImpl();
+			Admin admin=dao.findByCode(name);
+			if(admin!=null)
+			{
+				if(admin.getPassword().equals(pwd))
+				{
+					//credentials are correct
+					session.setAttribute("isLogin", name);
+					res.sendRedirect("toIndex.do");
+				}
+				else
+				{
+					//password is incorrect
+					req.setAttribute("error", "√‹¬Î¥ÌŒÛ");
+					req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
+				}
+			}
+			else
+			{
+				//Can't find user
+				req.setAttribute("error", "’À∫≈¥ÌŒÛ");
+				req.getRequestDispatcher("WEB-INF/main/login.jsp").forward(req,res);
+			}
 		}
 	}
 	
 	protected void toIndex(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
 		req.getRequestDispatcher("WEB-INF/main/index.jsp").forward(req,res);
+	}
+	
+	protected void logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		//invalidate session
+		HttpSession session=req.getSession();
+		session.invalidate();
+		res.sendRedirect("toLogin.do");
 	}
 	
 	protected void createImg(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException

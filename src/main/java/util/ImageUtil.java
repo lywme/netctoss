@@ -23,7 +23,7 @@ public final class ImageUtil {
 	private static final int SIZE = 4;
 	private static final int LINES = 5;
 	private static final int WIDTH = 80;
-	private static final int HEIGHT = 40;
+	private static final int HEIGHT = 30;
 	private static final int FONT_SIZE = 30;
 
 	public static Object[] createImage() {
@@ -48,8 +48,10 @@ public final class ImageUtil {
 			//设置字体大小
 			graphic.setFont(new Font(null, Font.BOLD + Font.ITALIC, FONT_SIZE));
 			//画字符
+			//graphic.drawString(chars[r] + "", (i - 1) * WIDTH / SIZE,
+					//HEIGHT / 2);
 			graphic.drawString(chars[r] + "", (i - 1) * WIDTH / SIZE,
-					HEIGHT / 2);
+							HEIGHT);
 			//记录字符
 			sb.append(chars[r]);
 		}

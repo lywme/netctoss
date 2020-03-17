@@ -23,4 +23,14 @@
   	<exception-type>java.lang.Exception</exception-type>
   	<location>/WEB-INF/error.jsp</location>
   </error-page>
+  
+  <filter>
+  	<filter-name>log</filter-name>
+  	<filter-class>web.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>log</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>
