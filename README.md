@@ -7,4 +7,4 @@ netctoss - Telecom Operation Support System
 
 
 * The login page which consists of the safe code verification
-![](https://github.com/lywme/netctoss/src/main/webapp/images/login.png)
+![](https://github.com/lywme/netctoss/raw/master/src/main/webapp/images/login.png)
