@@ -1,4 +1,4 @@
-##netctoss - Telecom Operation Support System
+#netctoss - Telecom Operation Support System
 
 ### This projec is a management system coding by JSP and Servlet using MVC architecture
 
