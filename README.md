@@ -20,3 +20,6 @@ netctoss - Telecom Operation Support System
 
 * In th fee list page, you can add new fee as well as modify existing fees, or delete a specific fee
 ![](https://github.com/lywme/netctoss/raw/master/src/main/webapp/images/addfee.png)  
+
+* If capture any exceptions or errors, jump to the error page and after 5 seconds back to login page
+![](https://github.com/lywme/netctoss/raw/master/src/main/webapp/images/error.png)  
