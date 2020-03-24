@@ -5,7 +5,7 @@ netctoss - Telecom Operation Support System
 * A short demo video on Youtube:[Click to see DEMO on Youtube](https://www.youtube.com/watch?v=Ep8QZnTCV7E)
 
 
-#### The refactor of the login page of this project using SpringMVC and SpringJDBC
+#### The refactor of the login page using SpringMVC and SpringJDBC
 [click on this link](https://github.com/lywme/netctossSpringMVC)
 
 
