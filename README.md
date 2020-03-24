@@ -6,8 +6,7 @@ netctoss - Telecom Operation Support System
 
 
 #### The refactor of the login page using SpringMVC and SpringJDBC
-[click on this link](https://github.com/lywme/netctossSpringMVC)
-
+[click on this link](https://github.com/lywme/netctossSpringMVC)  
 
 
 * The login page which consists of the verification code function
