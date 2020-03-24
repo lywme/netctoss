@@ -1,4 +1,5 @@
-# netctoss
+netctoss
+====
 ## This projec is a management system coding by JSP and Servlet using MVC architecture
 
 ###a short demo video on Youtube:
