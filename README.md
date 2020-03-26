@@ -1,17 +1,17 @@
 netctoss - Telecom Operation Support System
 ===
 
-### This project is a management system coding by JSP and Servlet using MVC architecture
-* A short demo video on Youtube : [Click to see DEMO on Youtube](https://www.youtube.com/watch?v=Ep8QZnTCV7E)  
+### This project is a management system coding by `JSP` and `Servlet` using MVC architecture
+* A short `demo` video on Youtube : [Click to see DEMO on Youtube](https://www.youtube.com/watch?v=Ep8QZnTCV7E)  
 
 ****
 
-## Some refinements based on the original project  
+## Some `refinements` based on the original project  
 
-### The refactor of the login page using SpringMVC and SpringJDBC
+### The refactor of the login page using `SpringMVC` and `SpringJDBC`
 [click on this link](https://github.com/lywme/netctossSpringMVC)  
 
-### The refactor of the login page using SpringMVC and Mybatis
+### The refactor of the login page using `SpringMVC` and `Mybatis`
 [click on this link](https://github.com/lywme/netctoss_sm)  
 
 ****
