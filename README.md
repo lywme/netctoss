@@ -8,10 +8,10 @@ netctoss - Telecom Operation Support System
 
 ## Some `refinements` based on the original project  
 
-### The refactor of the login page using `SpringMVC` and `SpringJDBC`
+### The refactor of the login page using `Spring`, `SpringMVC` and `SpringJDBC`
 [click on this link](https://github.com/lywme/netctossSpringMVC)  
 
-### The refactor of the login page using `SpringMVC` and `Mybatis`
+### The refactor of the login page using `Spring`, `SpringMVC` and `Mybatis`
 [click on this link](https://github.com/lywme/netctoss_sm)  
 
 ****
