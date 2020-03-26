@@ -8,6 +8,9 @@ netctoss - Telecom Operation Support System
 #### The refactor of the login page using SpringMVC and SpringJDBC
 [click on this link](https://github.com/lywme/netctossSpringMVC)  
 
+#### The refactor of the login page using SpringMVC and Mybatis
+[click on this link](https://github.com/lywme/netctoss_sm)  
+
 ****
 * The login page which consists of the verification code function
 ![](https://github.com/lywme/netctoss/raw/master/src/main/webapp/images/login.png)  
